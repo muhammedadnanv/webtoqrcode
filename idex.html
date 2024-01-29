@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .container {
+      margin-top: 50px;
+    }
+    #qrcode {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="text-center mb-4">QR Code Generator</h1>
+
+  <div class="form-group">
+    <label for="inputText">Enter URL or Text:</label>
+    <input type="text" class="form-control" id="inputText" placeholder="https://example.com">
+  </div>
+
+  <button class="btn btn-primary" onclick="generateQRCode()">Generate QR Code</button>
+
+  <div id="qrcode" class="mt-4"></div>
+</div>
+
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- QR Code Generator library -->
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<script>
+  function generateQRCode() {
+    var inputText = document.getElementById("inputText").value;
+
+    if (inputText.trim() === "") {
+      alert("Please enter a valid URL or text.");
+      return;
+    }
+
+    // Clear existing QR code
+    document.getElementById("qrcode").innerHTML = "";
+
+    // Generate QR code
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+      text: inputText,
+      width: 256,
+      height: 256,
+    });
+  }
+</script>
+<script src="apps.js"></script>
+
+</body>
+</html>
